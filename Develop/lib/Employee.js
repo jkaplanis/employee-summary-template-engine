@@ -18,7 +18,7 @@ class Employee {
   }
 
   getRole() {
-    const role = "Employee";
+    let role = "Employee";
     return role;
   }
 }
