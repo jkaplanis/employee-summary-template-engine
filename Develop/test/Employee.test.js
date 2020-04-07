@@ -2,31 +2,31 @@ const Employee = require("../lib/Employee");
 
 test("Can instantiate Employee instance", () => {
   const e = new Employee();
-  expect(typeof(e)).toBe("object");
+  expect(typeof e).toBe("object"); //pass
 });
 
 test("Can set name via constructor arguments", () => {
   const name = "Alice";
   const e = new Employee(name);
-  expect(e.name).toBe(name);
+  expect(e.name).toBe(name); //pass
 });
 
 test("Can set id via constructor argument", () => {
   const testValue = 100;
   const e = new Employee("Foo", testValue);
-  expect(e.id).toBe(testValue);
+  expect(e.id).toBe(testValue); //pass
 });
 
 test("Can set email via constructor argument", () => {
   const testValue = "test@test.com";
   const e = new Employee("Foo", 1, testValue);
-  expect(e.email).toBe(testValue);
+  expect(e.email).toBe(testValue); //pass
 });
 
 test("Can get name via getName()", () => {
   const testValue = "Alice";
   const e = new Employee(testValue);
-  expect(e.getName()).toBe(testValue);
+  expect(e.getName()).toBe(testValue); //pass
 });
 
 test("Can get id via getId()", () => {
@@ -41,7 +41,7 @@ test("Can get email via getEmail()", () => {
   expect(e.getEmail()).toBe(testValue);
 });
 
-test("getRole() should return \"Employee\"", () => {
+test('getRole() should return "Employee"', () => {
   const testValue = "Employee";
   const e = new Employee("Alice", 1, "test@test.com");
   expect(e.getRole()).toBe(testValue);
