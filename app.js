@@ -11,6 +11,18 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const employees = [];
+
+writeFile = html => {
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
+  }
+  fs.writeFile(outputPath, html, err => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(`Success! File location: ${outputPath}`);
+  });
+};
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 const addTeamMember = () => {
@@ -36,6 +48,7 @@ const addTeamMember = () => {
         ans.employeeType === "I don't want to add any more team members"
       ) {
         const html = render(employees);
+        writeFile(html);
       }
     });
 };
@@ -140,6 +153,7 @@ const addIntern = () => {
     });
 };
 addManager();
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
