@@ -10,7 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
@@ -27,6 +26,95 @@ const render = require("./lib/htmlRenderer");
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
+function anotherTeamMember() {
+  inquirer.prompt([
+    {
+      type: "checkbox",
+      message: "Which type of team member would you like to add?",
+      name: "teamMemmberType",
+      choices: [
+        "Engineer",
+        "Intern",
+        "I don't want to add any more team members",
+      ],
+    },
+  ]);
+}
+
+function addManager() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "What is your manager's name?",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is your manager's id?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your manager's email?",
+    },
+    {
+      type: "input",
+      name: "officeNumber",
+      message: "What is your manager's office number?",
+    },
+  ]);
+}
+
+function addEngineer() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "What is your engineer's name?",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is your engineer's id?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your engineer's email?",
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "What is your engineer's GitHub username?",
+    },
+  ]);
+}
+
+function addIntern() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "What is your intern's name?",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is your intern's id?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your intern's email?",
+    },
+    {
+      type: "input",
+      name: "school",
+      message: "What is your intern's school?",
+    },
+  ]);
+}
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
 // and Intern classes should all extend from a class named Employee; see the directions
