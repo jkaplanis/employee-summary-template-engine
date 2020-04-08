@@ -26,94 +26,123 @@ const render = require("./lib/htmlRenderer");
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
-function anotherTeamMember() {
-  inquirer.prompt([
-    {
-      type: "checkbox",
-      message: "Which type of team member would you like to add?",
-      name: "teamMemmberType",
-      choices: [
-        "Engineer",
-        "Intern",
-        "I don't want to add any more team members",
-      ],
-    },
-  ]);
+const employees = [];
+
+function addTeamMember() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Which type of team member would you like to add?",
+        name: "teamMemmberType",
+        choices: [
+          "Engineer",
+          "Intern",
+          "I don't want to add any more team members",
+        ],
+      },
+    ])
+    .then(function (ans) {
+      if (ans.teamMemmberType === "Engineer") {
+        addEngineer();
+      } else if (ans.teamMemmberType === "Intern") {
+        addIntern();
+      } else if (
+        ans.teamMemmberType === "I don't want to add any more team members"
+      ) {
+        render(employees);
+      }
+    });
 }
 
 function addManager() {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your manager's name?",
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "What is your manager's id?",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your manager's email?",
-    },
-    {
-      type: "input",
-      name: "officeNumber",
-      message: "What is your manager's office number?",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is your manager's name?",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is your manager's id?",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is your manager's email?",
+      },
+      {
+        type: "input",
+        name: "officeNumber",
+        message: "What is your manager's office number?",
+      },
+    ])
+    .then(function (managerObj) {
+      employees.push(managerObj);
+      addTeamMember();
+    });
 }
 
 function addEngineer() {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your engineer's name?",
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "What is your engineer's id?",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your engineer's email?",
-    },
-    {
-      type: "input",
-      name: "github",
-      message: "What is your engineer's GitHub username?",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is your engineer's name?",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is your engineer's id?",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is your engineer's email?",
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "What is your engineer's GitHub username?",
+      },
+    ])
+    .then(function (engineerObj) {
+      employees.push(engineerObj);
+      addTeamMember();
+    });
 }
 
 function addIntern() {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your intern's name?",
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "What is your intern's id?",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your intern's email?",
-    },
-    {
-      type: "input",
-      name: "school",
-      message: "What is your intern's school?",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is your intern's name?",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is your intern's id?",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is your intern's email?",
+      },
+      {
+        type: "input",
+        name: "school",
+        message: "What is your intern's school?",
+      },
+    ])
+    .then(function (internObj) {
+      employees.push(internObj);
+      addTeamMember();
+    });
 }
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
@@ -121,3 +150,4 @@ function addIntern() {
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+addManager();
