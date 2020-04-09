@@ -10,6 +10,7 @@ This is a CLI app that prompts a user to enter their employee information and bu
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshot](#screenshot)
 - [License](#license)
 - [Contributing](#contributing)
 - [Questions](#questions)
@@ -29,6 +30,11 @@ To run this program run
 ```
 node app.js
 ```
+
+## Screenshots
+
+![screenshot](./screenshots/screenshot.png)
+![screenshot](./screenshots/screenshot2.png)
 
 ## License
 
